@@ -13,7 +13,7 @@ RUN apt-get update &&\
 WORKDIR /var/server
 
 RUN curl -X GET -L \
-        -o server.zip \
+        -o server.tar.gz \
         https://cdn.zekro.de/modpacks/evolved-combat/${VERSION}/server.tar.gz && \
     tar -xzf server.tar.gz &&\
     rm -f server.tar.gz
