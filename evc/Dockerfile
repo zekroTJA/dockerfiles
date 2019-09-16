@@ -17,8 +17,13 @@ RUN curl -X GET -L \
     tar -xzf server.tar.gz &&\
     rm -f server.tar.gz
 
+ADD ./run.sh ./run.sh
+
 RUN mv forge-* forge.jar
+
+RUN mv ./config ./_config &&\
+    mkdir config
 
 EXPOSE 25565 25575
 
-CMD java -jar -Xms${XMS} -Xmx${XMX} ./forge.jar
+CMD bash ./run.sh
