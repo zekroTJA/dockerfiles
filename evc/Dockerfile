@@ -1,6 +1,6 @@
 FROM openjdk:8-stretch
 
-ARG VERSION=alpha
+ARG VERSION=release/latest
 
 ENV XMS=1G
 ENV XMX=3G
