@@ -31,7 +31,7 @@ WORKDIR /mc
 # link script to execute with server.properties
 COPY --from=build /build/rcon/dist/main /usr/bin/rconcli
 RUN chmod +x /usr/bin/rconcli
-RUN printf "#!/bin/bash\nrconcli --properties /mc/server.properties --auto-reconnect \$@" \
+RUN printf "#!/bin/bash\nrconcli --properties /mc/server.properties --auto-reconnect --rcon-encoding cp1252 \$@" \
       | tee /usr/bin/rcon &&\
     chmod +x /usr/bin/rcon
 
