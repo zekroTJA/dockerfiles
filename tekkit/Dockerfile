@@ -32,16 +32,27 @@ WORKDIR /mc
 COPY --from=build /build/rcon/dist/main /usr/bin/rconcli
 RUN chmod +x /usr/bin/rconcli
 RUN printf "#!/bin/bash\nrconcli --properties /mc/server.properties --auto-reconnect --rcon-encoding cp1252 \$@" \
-      | tee /usr/bin/rcon &&\
+        | tee /usr/bin/rcon &&\
     chmod +x /usr/bin/rcon
+
+# Setting up backup system
+COPY scripts /scripts
+RUN chmod +x /scripts/*
+RUN apt-get update &&\
+    apt-get install -y cron
+RUN mkdir -p /etc/cron.d &&\
+    printf "0 3,15 * * * /scripts/backup.sh >> /var/log/cron.log 2>&1\n" \
+        | tee /etc/cron.d/backups &&\
+    crontab /etc/cron.d/backups
+RUN mkdir /backups
 
 # Download tekkit server
 RUN curl -Lo server.tgz $SERVER_SOURCE &&\
     tar -xzvf server.tgz &&\
-    rm -rf server.tgz &&\
-    ls -lisah 
+    rm -rf server.tgz
 
 EXPOSE 25565 25575
-CMD java -jar \
-    -Xms$XMS -Xmx$XMX $JVM_PARAMS \
-    TekkitLite.jar nogui
+CMD cron &&\
+    java -jar \
+        -Xms$XMS -Xmx$XMX $JVM_PARAMS \
+        TekkitLite.jar nogui
