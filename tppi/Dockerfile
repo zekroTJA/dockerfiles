@@ -20,7 +20,7 @@ RUN curl -X GET -L \
 
 RUN curl -X GET -L \
         -o mods/legacyjavafixer-1.0.jar \
-        http://files.minecraftforge.net/LegacyJavaFixer/legacyjavafixer-1.0.jar
+        https://cdn.zekro.de/shared/legacyjavafixer-1.0.jar
 
 EXPOSE 25565 25565
 
