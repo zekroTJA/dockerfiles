@@ -18,7 +18,7 @@ LABEL maintainer="zekro <contact@zekro.de>" \
       description="Tekkit Lite server dockerized"
 
 # Source to download Tekkit lite server from
-ARG SERVER_SOURCE="https://cdn.zekro.de/modpacks/tekkitlitemod/tekkitlitemod_server.tar.gz"
+ARG SERVER_SOURCE="https://cdn.zekro.de/modpacks/bpbsm/1.3/server.tar.gz"
 
 # Java runtime parameters
 ENV XMS="1G" \
