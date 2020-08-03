@@ -34,7 +34,7 @@ version: '3'
 
 services:
 
- evi:
+  evi:
     image: 'zekro/evi:latest'
     environment:
       - 'XMS=1G'
