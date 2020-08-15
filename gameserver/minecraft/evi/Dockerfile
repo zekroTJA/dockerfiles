@@ -19,10 +19,7 @@ COPY ./run.sh ./run.sh
 
 RUN mv forge-* forge.jar
 
-RUN mv ./config ./_config &&\
-    mkdir config
-
-RUN mv ./server.properties ./_server.properties
+RUN mv ./config/MoreDefaultOptions/server.properties ./_server.properties
 
 EXPOSE 25565 25575
 
