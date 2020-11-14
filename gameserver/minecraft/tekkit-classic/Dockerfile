@@ -14,4 +14,4 @@ RUN curl -Lo server.zip $SERVER_SOURCE &&\
 CMD cron &&\
     java -jar \
         -Xms$XMS -Xmx$XMX $JVM_PARAMS \
-        Tekkit.jar nogui
+        Tekkit.jar nogui > /dev/null 2>&1 
