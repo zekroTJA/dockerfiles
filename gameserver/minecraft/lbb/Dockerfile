@@ -9,3 +9,4 @@ EXPOSE 25565
 ENV XMX=2G \
     XMS=1G
 ENTRYPOINT [ "./run.sh" ]
+CMD ["nogui"]
