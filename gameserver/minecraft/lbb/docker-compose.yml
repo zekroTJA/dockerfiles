@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  lbb:
+    image: lbb-server
+    build: .
+    ports:
+      - "16688:25565"
+    command: "-Xmx2G -Xms1G"
